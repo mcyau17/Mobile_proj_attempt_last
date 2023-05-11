@@ -5,33 +5,32 @@ import { Storage } from '@ionic/storage-angular';
 import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-romance',
+  templateUrl: './romance.page.html',
+  styleUrls: ['./romance.page.scss'],
 })
-export class HomePage implements OnInit{
+export class RomancePage implements OnInit {
 
 //stores movie data
 movieData: any = [];
 //Save file for the website
 MyStatus:String = "";
 //constructors for movie data, storage and nav controll
-constructor(private service: ServiceAPIService, private str: Storage, private navCtrl: NavController) { }
+  constructor(private service: ServiceAPIService, private str: Storage, private navCtrl: NavController) { }
 
-//allows the button to bring the user to a different browser
   async openBrowser() {
-    await Browser.open({ url: 'https://www.omdbapi.com/?apikey=ac551d97&s=war' });
+    await Browser.open({ url: 'https://www.omdbapi.com/?apikey=ac551d97&s=romance' });
   }
-//Collects all the data from the api on launch
+  //Collects all the data from the api on launch
   ngOnInit() {
-    this.service.GetMovieData().subscribe(
-    (data) => {
-    this.movieData = data.Search;
-    console.log(this.movieData);
-    });
-
-
+    this.service.GetRomanceData().subscribe(
+      (data) => {
+      this.movieData = data.Search; 
+      console.log(this.movieData);
+      });
   }
+
+
 //saves data
   async onSave(){
     await this.str.create();
@@ -42,8 +41,8 @@ async OnLoad(){
   this.MyStatus = await this.str.get("Status");
 }
 //methods to navigate through the different pages
-openRomance(){
-  this.navCtrl.navigateForward('/romance');
+openWar(){
+  this.navCtrl.navigateForward('/home');
 }
 openHorror(){
   this.navCtrl.navigateForward('/horror');
@@ -51,4 +50,5 @@ openHorror(){
 openComedy(){
   this.navCtrl.navigateForward('/comedy');
 }
+
 }

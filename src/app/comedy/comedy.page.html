@@ -1,16 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      War Films 
+      Comedy Films 
       <!--Buttons for Moving between pages-->
       <ion-button (click)="openHorror()">Horror</ion-button>
       <ion-button (click)="openRomance()">Romance</ion-button>
-      <ion-button (click)="openComedy()">Comedy</ion-button>
-      <!--Opens the API used for the page-->
-      <ion-button (click)="openBrowser()">War Api</ion-button>
+      <ion-button (click)="openWar()">War</ion-button>
+<!--Opens the API used for the page-->
+      <ion-button (click)="openBrowser()">Comedy Api</ion-button>
     </ion-title>
   </ion-toolbar>
-</ion-header> 
+</ion-header>
 <!--Main body-->
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
@@ -26,21 +26,26 @@
       <ion-card-header>
       <ion-card-subtitle>{{movie.Title}}</ion-card-subtitle>
       <ion-card-title>{{movie.Year}}</ion-card-title>
-      <ion-card-title>
-<!--Allows the user to rate movies-->
-        <label class="rating-label">
-          <strong>Rating</strong>
-          <input
-            class="rating"
-            max="5"
-            oninput="this.style.setProperty('--value', this.value)"
-            step="0.5"
-            type="range"
-            value="1">
-        </label>
 
-      </ion-card-title>
+      <ion-card-title>
+        <!--Allows the user to rate movies-->
+                <label class="rating-label">
+                  <strong>Rating</strong>
+                  <input
+                    class="rating"
+                    max="5"
+                    oninput="this.style.setProperty('--value', this.value)"
+                    step="0.5"
+                    type="range"
+                    value="1">
+                </label>
+        
+              </ion-card-title>
       </ion-card-header>
       </ion-card>
+
+     
+
   </div>
 </ion-content>
+
